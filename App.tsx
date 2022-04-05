@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Alert, Button } from 'react-native';
 
 export default function App() {
+  const [isPressed, setIP] = useState(false);
+  const showAlert = () => Alert.prompt('Exceed', 'Are you want to login?', text=>console.log(text))
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text} onPress={showAlert} >Hello</Text>
+      <Button title='press me' onPress={showAlert} />
+      <StatusBar style="inverted" />
+    </SafeAreaView>
   );
 }
 
@@ -17,4 +21,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: "red",
+  }
 });
